@@ -1,0 +1,131 @@
+###
+POST http://127.0.0.1:8000/register/ 
+Content-Type: application/json
+
+{
+    "username":"Athira",
+    "email":"athira@gmail.com",
+    "password":"athira@123"
+}
+
+###
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username" : "Vandana",
+    "password" : "vand@123"
+}
+
+###
+GET http://127.0.0.1:8000/register/
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/notes/
+Accept: application/json
+Authorization: Token c8068edbc85c7727bc3661ad0206ac15ff684803
+
+
+
+###
+POST http://127.0.0.1:8000/notes/ 
+Content-Type: application/json
+Authorization: Token c8068edbc85c7727bc3661ad0206ac15ff684803
+
+{
+    "title" : "Day in my life",
+    "description" : "blah blahhh blahhh"
+}
+
+
+#notes retrieve update delete
+
+###
+GET http://127.0.0.1:8000/notes/2/
+Accept: application/json
+Authorization: Token c8068edbc85c7727bc3661ad0206ac15ff684803
+
+###
+PUT http://127.0.0.1:8000/notes/2/
+Content-Type: application/json
+Authorization: Token c8068edbc85c7727bc3661ad0206ac15ff684803
+
+{
+    "title" : "Intro to Django",
+    "description": "Framework of python providing many in built features"
+}
+
+
+
+###
+DELETE http://127.0.0.1:8000/notes/3/
+Authorization: Token c8068edbc85c7727bc3661ad0206ac15ff684803
+
+
+
+###
+POST http://127.0.0.1:8000/logout/
+Content-Type: application/json
+Authorization: Token c8068edbc85c7727bc3661ad0206ac15ff684803
+
+#jwt, tasks
+
+
+###
+POST http://127.0.0.1:8000/jwt_login/
+Content-Type: application/json
+
+{
+    "username":"Athira",
+    "password":"athira@123"
+}
+
+
+###
+POST http://127.0.0.1:8000/jwt_refresh/
+Content-Type: application/json
+Authorization: Bearer eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTYyOTQyLCJpYXQiOjE3OTUxNjI2NDIsImp0aSI6ImFlMDQ0Mzg4YzM2MjQ3ZmE5MTcyNGJlNDJiYzllZGQ4IiwidXNlcl9pZCI6IjQifQ.MY8Egl8X8sCwivdNFAbzzJ6zYpnOZh7cWYtyAk3zZrI
+
+{
+    "refresh" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5NTI0ODk4MywiaWF0IjoxNzk1MTYyNTgzLCJqdGkiOiI4ZTBlODY4MGY5NGQ0N2MwYWM4MTk0ZWUxOTcwYzY4YyIsInVzZXJfaWQiOiI0In0.A-JHJatcVwrR_Gu6_pyPqExzBdmuyxcoL2dPfGB11KI"
+}
+
+###
+GET http://127.0.0.1:8000/tasks/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0NjU5LCJpYXQiOjE3OTUxNjQzNTksImp0aSI6IjY4YTc1OTUzNGM1MDQ2NjdiNDkwZjgwZDFkMzI1NzI1IiwidXNlcl9pZCI6IjQifQ.pI8lI7QLK9Y6OGcI6lYaHQ3p94NlRMoMuaAQD8VsnJs
+
+
+###
+POST http://127.0.0.1:8000/tasks/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0Mjg4LCJpYXQiOjE3OTUxNjM5ODgsImp0aSI6IjMzZGUwODM0ZWIxNjQxZGE4YzU1NWVjODk5NThlMjY0IiwidXNlcl9pZCI6IjQifQ.T4Q0cibXJE0jmafu2-nNP94Yf8dhwPcq0HB99CQrm00
+
+{
+    "title" : "factorial",
+    "description":"python code to find factorial of a number",
+    "due_date":"2026-10-20"
+}
+
+
+###
+GET http://127.0.0.1:8000/tasks/2/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0Mjg4LCJpYXQiOjE3OTUxNjM5ODgsImp0aSI6IjMzZGUwODM0ZWIxNjQxZGE4YzU1NWVjODk5NThlMjY0IiwidXNlcl9pZCI6IjQifQ.T4Q0cibXJE0jmafu2-nNP94Yf8dhwPcq0HB99CQrm00
+
+
+###
+PUT http://127.0.0.1:8000/tasks/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0Mjg4LCJpYXQiOjE3OTUxNjM5ODgsImp0aSI6IjMzZGUwODM0ZWIxNjQxZGE4YzU1NWVjODk5NThlMjY0IiwidXNlcl9pZCI6IjQifQ.T4Q0cibXJE0jmafu2-nNP94Yf8dhwPcq0HB99CQrm00
+
+{
+    "title" : "prime number",
+    "description":"python code to check whether a number is prime or not",
+    "due_date":"2026-10-20"
+}
+
+###
+DELETE http://127.0.0.1:8000/tasks/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTY0NjU5LCJpYXQiOjE3OTUxNjQzNTksImp0aSI6IjY4YTc1OTUzNGM1MDQ2NjdiNDkwZjgwZDFkMzI1NzI1IiwidXNlcl9pZCI6IjQifQ.pI8lI7QLK9Y6OGcI6lYaHQ3p94NlRMoMuaAQD8VsnJs
