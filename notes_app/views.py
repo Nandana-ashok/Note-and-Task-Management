@@ -7,6 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from rest_framework_simplejwt.tokens import RefreshToken
+
 
 
 
@@ -158,6 +160,22 @@ class TaskRetrieveUpdateDeleteView(APIView):
             raise serializers.ValidationEroor("Access Denied....!!!")
         task.delete()
         return Response({"Messae":"Task deleted successfully...."})
+
+
+class JWT_LogOut(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self,request):
+
+        try:
+            refresh_token = request.data.get('refresh')
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({
+                "Message":"Logout Successfull..."
+            })
+        except Exception:
+            return Response({"error": "Invalid Refresh token"})
+        
 
 
 
